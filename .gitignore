@@ -1,0 +1,5 @@
+/node_modules
+/static/images
+/static/css/fonts
+*.rar
+*.xls

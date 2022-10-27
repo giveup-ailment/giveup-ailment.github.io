@@ -1,0 +1,203 @@
+
+  
+<style>
+.footer-wrapper{
+   padding: 0 .3rem;
+  background: #000a20 url(./static/images/footer-bg.png) no-repeat center bottom ;
+  height: 6rem;
+  color: #fff;
+  margin-bottom: 70px;
+  /* 这个高度是隔离底部固定的按钮 */
+}
+.footer-x{
+  height: 100%;
+}
+
+/* 移动端底部 */
+.mfooter-x{
+  height: 100%;
+  padding-top: .7rem;
+}
+.mfooter-x .tel{
+  margin: 8px 0;
+}
+.mfooter-x .line{
+  height: 1px;
+  margin: 20px 0;
+  background: #B4B4B4;
+}
+.mfooter-x .beian{
+  margin: 8px 0;
+}
+
+/* PC端底部 */
+@media (min-width:992px){
+  .footer-wrapper{
+    margin-bottom: 0;
+  }
+  .pfooter-x{
+   justify-content: space-between;
+   height: 100%;
+   align-items: center;
+   padding-bottom: 60px;
+  }
+  .pfooter-nav-ul{
+    display: flex;
+  }
+  .pfooter-nav-li + .pfooter-nav-li{
+   margin-left: 100px;
+  }
+  .pfooter-nav-li a{
+    display: block;
+    color:rgba(255,255,255,.65);
+    margin-top: 10px;
+  }
+  .pfooter-nav-li a:hover{
+    color: #fff;
+  }
+  .pfooter-app{
+    margin: 60px 0 40px;
+  }
+  .pfooter-app span,
+  .pfooter-yyqx span,
+  .pfooter-yszc a:nth-child(2){
+    margin: 0 10px;
+    padding: 0 10px;
+    border-left: 1px #757575 solid;
+    border-right: 1px #757575 solid;
+  }
+  .pfooter-yyqx a{
+    color:rgba(255,255,255,.85);
+  }
+  .pfooter-yyqx a:hover,
+  .pfooter-yszc a:hover,
+  .pfooter-beian a:hover{
+    color: #fff;
+  }
+  .pfooter-yszc{
+    margin: 40px 0 10px;
+  }
+  .pfooter-yszc a:nth-child(3){
+    margin-right: 10px;
+    padding-right: 10px;
+    border-right: 1px #757575 solid;
+    cursor: text;
+  }
+  .pfooter-beian a:nth-child(2){
+    margin: 0 30px;
+  }
+
+  .pfooter-gzh-ul{
+    display: flex;
+    margin-top: 30px;
+    margin-bottom: 20px;
+  }
+  .pfooter-gzh-li .ewm{
+    width: 110px;
+    height: 100px;
+    background: #eee;
+    color: orangered;
+    margin-top: 10px;
+    font-weight: 700;
+background-image:
+    linear-gradient(45deg,
+        rgba(0,0,0,.25) 25%, transparent 0,
+        transparent 75%, rgba(0,0,0,.25) 0),
+    linear-gradient(45deg,
+        rgba(0,0,0,.25) 25%, transparent 0,
+        transparent 75%, rgba(0,0,0,.25) 0);
+background-position: 0 0, 11px 11px;
+background-size: 22px 22px;
+  }
+  .pfooter-gzh-li +  .pfooter-gzh-li {
+    margin-left: 70px;
+  }
+
+  .pfooterMiddle{
+    width: 1px;
+    background: rgba(255,255,255,.85);
+    height: 60%;
+  }
+}
+</style>
+
+<div class="footer-wrapper">
+  <div class="footer-x container">
+
+    <!-- 移动端底部 -->
+     <footer class="mfooter-x d-lg-none">
+          <p>联系方式</p>
+          <a href="tel:18121547176" class="bi-telephone-fill tel"> 18121547176 </a>
+          <p class="bi-geo-alt-fill geo">深圳市福田区梅林街道梅丰社区梅华路105号多丽工业区科技楼3层307</p>
+          <p class="line"></p>
+
+          <p>©️ 2022 江苏发货帮科技有限公司版权所有</p>
+          <a class="beian" href="javascript:;">苏ICP备xxxxxxxxxxxx号</a>
+          <p>经营许可证 : 苏A3-xxxxxxxxxxxxx</p>
+     </footer>
+
+     <!-- PC端底部 -->
+     <footer class="pfooter-x d-none d-lg-flex">
+         <div class="pfooterLeft-x">
+               <ul class="pfooter-nav-ul">
+                 <li class="pfooter-nav-li">
+                    <p>首页</p>
+                     <a href="./index.html"> 发货帮首页 </a>
+                  </li>
+                  <li class="pfooter-nav-li">
+                    <p>关于</p>
+                     <a href="./aboutUS.html"> 关于我们 </a>
+                     <a href="javascript:;"> 产品定位 </a>
+                     <a href="./contactUS.html"> 联系我们 </a>
+                  </li>
+                  <li class="pfooter-nav-li">
+                    <p>加入</p>
+                     <a href="./zhuanxian.html"> 专线入驻 </a>
+                  </li>
+               </ul>  
+
+               <div class="pfooter-app wh-c1">
+                APP开发者：江苏发货帮科技有限公司 <span>应用名称：发货帮-拉货搬家</span> 应用版本：1.1.11
+               </div>
+
+               <div class="pfooter-yyqx wh-c1">
+                 应用权限 : <a href="javascript:;">查看权限</a>
+                 <span>隐私政策 : <a href="javascript:;">查看政策</a></span>
+                 更新时间 : 2022-4-11
+               </div>
+               
+               <div class="pfooter-yszc wh-c2">
+                <a href="javascript:;">隐私政策</a>
+                <a href="javascript:;"> 条款及条件 </a>
+                <a href="javascript:;">江苏发货帮科技有限公司</a>
+                <a href="javascript:;">发货帮官网</a>
+               </div>
+
+               <div class="pfooter-beian wh-c2">
+                 <a href="javascript:;"> 苏ICP备xxxxxxxxxxxx号</a>
+                 <a href="javascript:;">经营许可证 : 苏B2-xxxxxx</a>
+                 <a href="javascript:;">营业执照</a>
+               </div>
+         </div>    
+
+         <div class="pfooterMiddle"></div>
+
+         <div class="pfooterRight-x">
+           <p class="pfooterR-line1"> 关注我们 </p>
+           <ul class="pfooter-gzh-ul wh-c1">
+                   <li class="pfooter-gzh-li">
+                     <p>官方订阅号</p>
+                     <div class="ewm">二维码占位</div>
+                   </li>
+                   <li class="pfooter-gzh-li">
+                    <p>官方服务号</p>
+                    <div class="ewm">二维码占位</div>
+                  </li>
+           </ul>
+           <p class="pfooterR-line3 wh-c2"> 客服电话 : 13373****8670 </p>
+         </div>
+
+     </footer>
+
+  </div>
+</div>

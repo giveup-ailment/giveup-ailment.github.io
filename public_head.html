@@ -1,0 +1,417 @@
+<link rel="stylesheet" href="./static/css/bootstrap-grid.css">
+<link rel="stylesheet" href="./static/css/bootstrap-icons.css">
+<link rel="stylesheet" href="./static/css/body.css">
+<style>
+  .header-wrapper {
+    height: 90px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, .2);
+    background: #fff;
+  }
+
+  .header-container {
+    height: 100%;
+  }
+
+  .header-x {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+  }
+
+  .logo-img {
+    width: 140px;
+  }
+
+  .header-nav-x {
+    position: absolute;
+    left: 0;
+    top: calc(100% - 3px);
+    right: 0;
+    border-top: 3px solid #ff382f;
+    line-height: 46px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, .2);
+    font-weight: 700;
+    color: #05255f;
+    background: #fff;
+    visibility: hidden;
+  }
+
+  .header-nav-x.active {
+    visibility: visible;
+  }
+
+  .header-nav-x li {
+    padding: 0 .3rem;
+    position: relative;
+  }
+
+  .header-nav-x li+li {
+    border-top: 1px solid rgba(123, 128, 149, 0.15);
+  }
+
+  .header-nav-x .hasNav2::after {
+    font-family: bootstrap-icons;
+    content: "\f282";
+    position: absolute;
+    right: .32rem;
+    top: 0;
+    color: inherit;
+  }
+
+  .header-nav-x li:active,
+  .header-nav-x > li.highlight,
+  .header-nav-x .hasNav2.active {
+    color: #ff382f;
+  }
+
+  .header-nav-x .hasNav2.active::after {
+    transform: scaleY(-1);
+  }
+
+  .header-nav-x .hasNav2.active .header-nav2-x {
+    display: block;
+  }
+
+  .header-nav2-x {
+    display: none;
+  }
+
+  .header-nav2-x li {
+    color: #05255f;
+  }
+
+  /* 移动端 下载App */
+  .m-loadApp-x {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    color: #fff;
+    padding: 9px .3rem;
+    border-top: 1px solid rgba(123, 128, 149, 0.15);
+    background: #fff;
+  }
+
+  .m-loadApp-x .m-loadApp-btn {
+    background: #F16622;
+    height: 50px;
+    display: block;
+    line-height: 50px;
+    text-align: center;
+    font-size: 1.1em;
+    border-radius: 4px;
+  }
+
+  /* PC端 下载App */
+  .p-loadApp-x {
+    position: relative;
+    width: 130px;
+    height: 100%;
+    text-align: center;
+    align-items: center;
+  }
+
+  .p-loadApp-x>p {
+    width: 100%;
+    background: #f16622;
+    border-radius: 22px;
+    line-height: 43px;
+    border-radius: 22px;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  .p-loadApp-ewm {
+    padding: 20px 10px 10px;
+    background: #fff;
+    position: absolute;
+    right: 0;
+    top: calc(100% + 15px);
+    display: flex;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .1);
+    color: #05255f;
+    transform: scale(0);
+    opacity: 0;
+    transform-origin: right top;
+    transition: all .3s .5s;
+  }
+
+  .ewmli>div {
+    width: 110px;
+    height: 110px;
+    padding: 0 10px;
+    box-sizing: content-box;
+    margin-bottom: 10px;
+    line-height: 106px;
+    background-color: #eee;
+    background-image:
+      linear-gradient(45deg,
+        rgba(0, 0, 0, .25) 25%, transparent 0,
+        transparent 75%, rgba(0, 0, 0, .25) 0),
+      linear-gradient(45deg,
+        rgba(0, 0, 0, .25) 25%, transparent 0,
+        transparent 75%, rgba(0, 0, 0, .25) 0);
+    background-size: 22px 22px;
+    background-position: 0 0, 11px 11px;
+    background-origin: content-box;
+    background-clip: content-box;
+  }
+
+  .ewmli+.ewmli>div {
+    border-left: 2px solid rgba(123, 128, 149, 0.15);
+  }
+
+  .p-loadApp-ewm::before {
+    content: "\f235";
+    position: absolute;
+    right: 50px;
+    top: -15px;
+    font-family: bootstrap-icons;
+    font-size: 35px;
+    line-height: .5;
+    color: #f16622;
+  }
+
+  .p-loadApp-x:hover .p-loadApp-ewm {
+    transform: scale(1);
+    opacity: 1;
+    transition-delay: 0s;
+  }
+
+  /* 移动端菜单开关 */
+  .m-header-nav-toggle {
+    width: 36px;
+    height: 28px;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    perspective: 70px;
+  }
+
+  .m-header-nav-toggle span {
+    width: 100%;
+    height: 4px;
+    background-color: #333;
+    transform-origin: left center;
+    transition: all .3s;
+    transform: rotateY(35deg);
+  }
+
+  .m-header-nav-toggle.active span:nth-child(1) {
+    transform: translateZ(20px) rotateY(35deg) rotateZ(45deg);
+    background-color: #FED811;
+  }
+
+  .m-header-nav-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .m-header-nav-toggle.active span:nth-child(3) {
+    transform: translateZ(20px) rotateY(35deg) rotateZ(-45deg);
+    background-color: #F16622;
+  }
+
+
+  /* 回到顶部 */
+  .goTop {
+    width: 50px;
+    height: 50px;
+    background: #F16622;
+    color: #fff;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 50px;
+    text-align: center;
+    border-radius: 50%;
+    position: fixed;
+    right: .6rem;
+    bottom: 2.4rem;
+    transform: translateY(40px);
+    opacity: 0;
+    visibility: hidden;
+    transition: all .4s;
+  }
+  .goTop.active{
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+
+
+  /* pC 头 */
+  @media (min-width:992px) {
+    .header-wrapper {
+      height: 100px;
+      position: fixed;
+      left: 0;
+      top: 0;
+      right: 0;
+    }
+
+    .logo-img {
+      width: 160px;
+    }
+
+    .header-x {
+      justify-content: flex-start;
+    }
+
+    .header-nav-x {
+      visibility: visible;
+      position: static;
+      display: flex;
+      height: 100%;
+      line-height: 98px;
+      border-top: 0;
+      box-shadow: none;
+      font-size: 1.2em;
+      margin-left: auto;
+      margin-right: 70px;
+    }
+
+    .header-nav-x li+li {
+      border-top: 0;
+    }
+
+    .header-nav-x .hasNav2::after {
+      right: 0;
+    }
+
+    .header-nav2-x {
+      position: absolute;
+      left: 0;
+      top: 80px;
+      min-width: 115%;
+      white-space: nowrap;
+      line-height: 60px;
+      background: #fff;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, .1);
+    }
+  }
+</style>
+
+
+<div class="header-wrapper">
+  <div class="header-container container">
+    <header class="header-x ">
+
+      <img class="logo-img" src="./static/images/img_nav_logo.png" alt="">
+
+      <ul class="header-nav-x">
+        <li data-key='/index'> <a href="./index.html"> 首页 </a> </li>
+        <li data-key='/zhuanxian'> <a href="./zhuanxian.html"> 专线入驻 </a> </li>
+        <li data-key='/aboutUS' class="hasNav2">
+          <a href="javascript:;"> 关于我们 </a>
+          <ol class="header-nav2-x" onclick='event.stopPropagation()'>
+            <li> <a href="./aboutUS.html"> 关于我们</a></li>
+            <li> <a href="javascript:;"> 产品定位</a></li>
+            <li> <a href="./contactUS.html"> 联系我们</a></li>
+          </ol>
+        </li>
+      </ul>
+
+      <!-- 移动端菜单按钮开关 -->
+      <div class="m-header-nav-toggle d-lg-none">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <!-- 移动端下载按钮 -->
+      <div class="m-loadApp-x d-lg-none">
+        <a class="m-loadApp-btn" href="javascript:;"> 下载发货帮App </a>
+      </div>
+
+      <!-- pc端下载按钮 -->
+      <div class="p-loadApp-x d-none d-lg-flex">
+        <p>下载App</p>
+        <ul class="p-loadApp-ewm">
+          <li class="ewmli">
+            <div>二维码占位</div>
+            <span>用户端下载</span>
+          </li>
+          <li class="ewmli">
+            <div>二维码占位</div>
+            <span>司机端下载</span>
+          </li>
+          <li class="ewmli">
+            <div>二维码占位</div>
+            <span>企业端下载</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 回到顶部 -->
+      <div class="goTop bi-arrow-up-short d-lg-none"></div>
+
+    </header>
+  </div>
+</div>
+
+
+
+<script>
+  //  移动端二级菜单切换
+  const nav2s = document.querySelectorAll('.hasNav2')
+  nav2s.forEach(item => {
+    item.addEventListener('click', function (e) {
+      for (let i = 0; i < nav2s.length; i++)
+        if (nav2s[i] !== item) nav2s[i].classList.remove('active');
+
+      this.classList.toggle('active')
+
+    })
+  })
+
+
+  // 移动端一级菜单开关
+  const m_nav_toggle = document.querySelector('.m-header-nav-toggle')
+  const headerNav = document.querySelector('.header-nav-x')
+  m_nav_toggle.addEventListener('click', function (e) {
+    this.classList.toggle('active')
+    headerNav.classList.toggle('active')
+  })
+
+
+
+
+
+  // 回到顶部
+  const goTop = document.querySelector('.goTop')
+  window.addEventListener('scroll', function(e){
+    const scroll_top = document.documentElement.scrollTop || document.body.scrollTop
+    if( scroll_top > 160 )  goTop.classList.add('active');
+    else goTop.classList.remove('active');
+  })
+  goTop.addEventListener('click', function(e){
+    $('html, body').animate({ scrollTop: 0 }, 300);
+  })
+
+
+// 头顶导航栏高亮
+const h_nav_lis = document.querySelectorAll('.header-nav-x > li')
+let pathKey = window.location.pathname
+// switch 用来对特殊情况进行重载
+switch(true){  
+  case pathKey === '/': 
+  pathKey = '/index' 
+  break;
+
+  case pathKey.includes('/contactUS'):
+  pathKey = '/aboutUS'
+  break;
+}
+console.log(pathKey) // 路径关键字
+Array.from( h_nav_lis ).find(item => {
+  const key = item.dataset.key
+  if( pathKey.includes(key) ) {
+    item.classList.add('highlight')
+    return true
+  }
+})
+
+
+</script>

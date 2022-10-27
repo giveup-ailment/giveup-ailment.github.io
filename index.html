@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>发货帮</title>
+  <link rel="stylesheet" href="./static/css/swiper.css">
+</head>
+
+<body>
+
+  <!-- head -->
+  <div id="head"></div>
+
+  <!-- banner -->
+  <div class="swiper-container banner-container">
+    <nav class="banner-wrapper swiper-wrapper">
+      <a href="javascript:;" class="swiper-slide banner-slide">
+       <img src="./static/images/banner1.jpg" alt="">
+      </a>
+      <a href="javascript:;" class="swiper-slide banner-slide">
+        <img src="./static/images/banner2.jpg" alt="">
+      </a>
+      <a href="javascript:;" class="swiper-slide banner-slide">
+        <img src="./static/images/banner3.jpg" alt="">
+      </a>
+    </nav>
+
+   <div class="swiper-pagination banner-pagination"></div>
+    <div class="swiper-button-next swiper-button-white banner-button-next d-none d-lg-block"></div>
+    <div class="swiper-button-prev swiper-button-white banner-button-prev d-none d-lg-block"></div> 
+  </div>
+
+  <!-- why? -->
+  <div class="why-x container">
+     <p class="why-title tc">为什么选择发货帮啊?</p>
+     <ul class="why-nav row">
+       <li class="why-li tc col-6 col-md-3">
+         <img src="./static/images/img_mian_1.png" alt="">
+         <p class="why-txt1"> 一站式服务 </p>
+         <p class="why-txt2">货主、承运商共享线上平台资源 <br>实现一站式自主交易</p>
+       </li>
+
+       <li class="why-li tc col-6 col-md-3">
+        <img src="./static/images/img_mian_2.png" alt="">
+        <p class="why-txt1"> 数字化运营 </p>
+        <p class="why-txt2">平台融合链接TMS+WMS+OMS+CRM <br>
+        实现数据互联互通为运营管理提供数据支撑</p>
+      </li>
+
+      <li class="why-li tc col-6 col-md-3">
+        <img src="./static/images/img_mian_3.png" alt="">
+        <p class="why-txt1"> 智能化匹配 </p>
+        <p class="why-txt2">平台根据货主需求只能匹配性价比高的承运商 <br>
+         承运商根据自身能力合理接单,简化沟通成本</p>
+      </li>
+
+      <li class="why-li tc col-6 col-md-3">
+        <img src="./static/images/img_mian_4.png" alt="">
+        <p class="why-txt1"> 担保式履约 </p>
+        <p class="why-txt2">承运商自主承诺 <br>
+         平坦监管, 担保交易, 裁判式纠纷机制</p>
+      </li>
+     </ul>
+  </div>
+
+
+  <!-- foot -->
+  <div id="foot"></div>
+
+
+<!-- <div style="height: 200px;"></div> -->
+
+  <script src="./static/js/jquery-2.0.0.min.js"></script>
+  <script src="./static/js/swiper.jquery.min.js"></script>
+  <script>
+    $("#head").load("./public_head.html");
+    $("#foot").load("./public_foot.html");
+
+    // 轮播图
+    var bannerSwiper = new Swiper('.banner-container', {
+      pagination: '.banner-pagination',
+      nextButton: '.banner-button-next',
+      prevButton: '.banner-button-prev',
+      paginationClickable: true,
+       autoplay:5000,
+       autoplayDisableOnInteraction:false,
+      loop:true,
+      width: window.innerWidth
+    });
+
+
+
+  </script>
+</body>
+
+</html>
